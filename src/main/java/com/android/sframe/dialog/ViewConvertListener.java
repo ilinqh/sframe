@@ -1,0 +1,46 @@
+package com.android.sframe.dialog;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+/**
+ * Created by lin on 2017/9/6.
+ * 作用：绑定事件操作
+ */
+
+public abstract class ViewConvertListener implements Parcelable {
+
+    public abstract void convertView(ViewHolder holder, BaseDialog dialog);
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
+
+    public ViewConvertListener() {
+    }
+
+    protected ViewConvertListener(Parcel in) {
+    }
+
+    public static final Creator<ViewConvertListener> CREATOR = new Creator<ViewConvertListener>() {
+        @Override
+        public ViewConvertListener createFromParcel(Parcel source) {
+            return new ViewConvertListener(source) {
+                @Override
+                public void convertView(ViewHolder holder, BaseDialog dialog) {
+
+                }
+            };
+        }
+
+        @Override
+        public ViewConvertListener[] newArray(int size) {
+            return new ViewConvertListener[size];
+        }
+    };
+}
